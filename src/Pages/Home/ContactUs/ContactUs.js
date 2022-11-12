@@ -16,9 +16,9 @@ const ContactUs = () => {
                         <div className="card-body">
                             <div className="form-control">
 
-                                <input type="text" placeholder="email" className="input input-bordered" />
+                                <input type="text" placeholder="email" className="input input-bordered mb-2" />
 
-                                <input type="text" placeholder="subject" className="input input-bordered" />
+                                <input type="text" placeholder="subject" className="input input-bordered mb-2" />
 
                                 <textarea className="textarea textarea-bordered" placeholder="Your Message"></textarea>
                             </div>

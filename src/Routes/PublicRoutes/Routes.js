@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
+import Appointment from "../../Pages/Appointment/Appoinment/Appointment";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Shared/Login/Login";
 import Registration from "../../Pages/Shared/Registration/Registration";
@@ -20,6 +21,10 @@ import Registration from "../../Pages/Shared/Registration/Registration";
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/appoinment',
+                element: <Appointment></Appointment>
             },
         ]
     }
