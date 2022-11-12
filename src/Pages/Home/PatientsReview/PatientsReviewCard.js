@@ -11,7 +11,7 @@ const PatientsReviewCard = ({ review }) => {
                 <p className='p-2'>{description}</p>
                 <div className='flex items-center  mt-5'>
                     <div className="card-actions justify-start">
-                        <img className='border-4 rounded-full border-green-500' src={reviewerImage} alt='' />
+                        <img className='w-20 border-4 rounded-full border-green-500' src={reviewerImage} alt='' />
                     </div>
                     <div className='pl-5'>
                     <p className='font-bold '>{reviwerName}</p>
