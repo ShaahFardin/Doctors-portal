@@ -1,9 +1,12 @@
 import React from 'react';
+import Header from '../../Shared/Header/Header';
+import Sidebar from '../Sidebar/Sidebar';
 
 const Dashboard = () => {
     return (
-        <div>
-            <h1 className='text-4xl'>Dashboard</h1>
+        <div className=''>
+            <Header></Header>
+            <Sidebar></Sidebar>
         </div>
     );
 };
