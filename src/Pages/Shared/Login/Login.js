@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 
 
 const Login = () => {
 
-    const { loginNewUser } = useContext(AuthContext);
+    const { loginNewUser, googleSignIn } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
@@ -30,6 +31,18 @@ const Login = () => {
                 console.log(error);
                 setLoginError(error.message)
             })
+    }
+
+    const handleGoogleSignIn=()=>{
+        googleSignIn()
+        .then((result)=>{
+            const user = result.user;
+            console.log(user);
+            toast.success("Google sign in successfull")
+        })
+        .catch(error=>{
+            console.log(error.message);
+        })
     }
 
     return (
@@ -71,7 +84,7 @@ const Login = () => {
                     </Link>
                 </p>
                 <div className="divider">OR</div>
-                <button className="btn btn-outline w-full text-black">Continue with Google</button>
+                <button onClick={handleGoogleSignIn} className="btn btn-outline w-full text-black">Continue with Google</button>
             </div>
         </div>
     );
