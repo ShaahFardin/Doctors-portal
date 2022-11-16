@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 
 const Registration = () => {
 
     const {createNewUserManually, updateUser} = useContext(AuthContext);
     const [signupError, setSignupError] = useState('');
+    const navigate = useNavigate();
+   
 
     const { register, formState: { errors }, handleSubmit } = useForm();
     
@@ -19,17 +21,15 @@ const Registration = () => {
         .then(result=>{
             const user = result.user;
             console.log(user)
-            toast.success("User created successfully");
+            // toast.success("User created successfully");
 
             const userInfo = {
                 displayName: data.name,
-                photoURL: data.image
             }
             updateUser(userInfo)
             .then(()=>{
-                toast('Display Name should be updated by now!', {
-                    icon: '👏',
-                  })
+                toast.success("User name updated")
+                 navigate('/')
             })
             .catch(err=>console.log(err))
         })
@@ -79,7 +79,7 @@ const Registration = () => {
                         <input type="password"
                             {...register('password', {required: "Password must be atleast 6 character"})}
                             className="input input-bordered w-full max-w-xs" />
-                        {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
+                     
                         {signupError && <p className='text-red-500'>{errors.password.message}</p>}
                        
                     </div>

@@ -1,7 +1,11 @@
 import { format } from 'date-fns';
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { AuthContext } from '../../../context/AuthProvider';
 
-const BookingModal = ({ treatment, selectedDate , setTreatment}) => {
+const BookingModal = ({ treatment, selectedDate, setTreatment, refetch }) => {
+
+    const { user } = useContext(AuthContext);
 
     const { name, slots } = treatment;
     const date = format(selectedDate, "PP")
@@ -14,14 +18,34 @@ const BookingModal = ({ treatment, selectedDate , setTreatment}) => {
         const phone = form.phone.value;
         const email = form.email.value;
 
-        const booking = {
+        const bookings = {
             appointmentDate: date,
             treatment: name,
             patient: patientName,
             phone, email, slot
         }
-        console.log(booking);
-        setTreatment(null)
+
+        fetch('http://localhost:5000/bookings', {
+            method: "POST",
+            headers: {
+                'content-type': "application/json"
+            },
+            body: JSON.stringify(bookings)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    setTreatment(null)
+                    toast.success("Bookings confirmed")
+                    refetch()
+                }
+                else{
+                    toast.error(data.message)
+                }
+
+            })
+
     }
 
     return (
@@ -40,9 +64,9 @@ const BookingModal = ({ treatment, selectedDate , setTreatment}) => {
                                 slots.map((slot, i) => <option value={slot} key={i}>{slot}</option>)
                             }
                         </select>
-                        <input name='name' type="text" placeholder="Your Full Name" className="input input-bordered w-full my-2" />
+                        <input name='name' type="text" placeholder="Name" className="input input-bordered w-full my-2" />
                         <input name='phone' type="text" placeholder="Phone Number" className="input input-bordered w-full my-2" />
-                        <input name='email' type="text" placeholder="Email" className="input input-bordered w-full my-2" />
+                        <input name='email' type="text" readOnly placeholder={user?.email} value={user?.email} className="input input-bordered w-full my-2" />
                         <input name='' type="text" placeholder="Type here" className="input input-bordered w-full my-2" />
                         <button type='submit' className="btn mt-5 w-full">Submit</button>
                     </form>

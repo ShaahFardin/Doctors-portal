@@ -23,7 +23,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                alert("Login successfull");
+                toast.success("Login successfull");
                 navigate(from, {replace: true})
 
             })
