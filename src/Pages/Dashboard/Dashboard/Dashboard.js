@@ -5,8 +5,7 @@ import Sidebar from '../Sidebar/Sidebar';
 const Dashboard = () => {
     return (
         <div className=''>
-            <Header></Header>
-            <Sidebar></Sidebar>
+           dashboard
         </div>
     );
 };
