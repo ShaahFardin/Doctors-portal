@@ -4,7 +4,6 @@ import Main from "../../Layout/Main";
 import Appointment from "../../Pages/Appointment/Appoinment/Appointment";
 import AddDoctor from "../../Pages/Dashboard/AddDoctor/AddDoctor";
 import AllUser from "../../Pages/Dashboard/AllUsers/AllUser";
-import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import ManageDoctors from "../../Pages/Dashboard/ManageDoctors/ManageDoctors";
 import MyAppointment from "../../Pages/Dashboard/MyAppointment/MyAppointment";
 import Home from "../../Pages/Home/Home/Home";
