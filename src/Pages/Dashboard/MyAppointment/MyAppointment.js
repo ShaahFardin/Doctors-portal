@@ -12,7 +12,11 @@ const MyAppointment = () => {
     const {data: bookings = []} = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async ()=>{
-            const res = await fetch(url);
+            const res = await fetch(url, {
+                headers:{
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data
         }
@@ -21,7 +25,7 @@ const MyAppointment = () => {
 
     return (
         <div>
-            <h3 className='text-3xl'>My Appoinment</h3>
+            <h3 className='text-3xl mb-10'>My Appoinment</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                 

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faList, faRightFromBracket, faUserAlt } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faHospitalUser, faList, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
 
 const Header = () => {
@@ -21,14 +21,14 @@ const Header = () => {
         <li>
             <Link to='/'> <FontAwesomeIcon icon={faHome} className=''></FontAwesomeIcon>Home</Link>
         </li>
-        <li><Link to='/about'><FontAwesomeIcon icon={faList}/> About</Link></li>
+        <li><Link to='/about'><FontAwesomeIcon icon={faList} /> About</Link></li>
         <li><Link to='/appoinment'><FontAwesomeIcon icon={faCalendarCheck} />Appointment</Link></li>
-        
+
         {user?.uid ?
             <>
                 <div className="dropdown dropdown-end cursor-pointer">
                     <div tabIndex={0} className="avatar online">
-                        <div className="w-8 rounded-full">
+                        <div className="w-8 ml-3 mt-2 md:w-12 rounded-full">
                             <img src={user?.photoURL} alt='' />
                         </div>
                     </div>
@@ -44,7 +44,7 @@ const Header = () => {
             <>
                 <li><Link to='/login'> <FontAwesomeIcon icon={faRightFromBracket} /> Login</Link></li>
             </>
-            }
+        }
 
     </>
 
@@ -59,7 +59,12 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl">Doctors Portal</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl">
+                    <p className='text-3xl text-green-500'>
+                        <FontAwesomeIcon className='mr-3' icon={faHospitalUser} />
+                        Doctors Portal
+                    </p>
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal items-center  p-0">
