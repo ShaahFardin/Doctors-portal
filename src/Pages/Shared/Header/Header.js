@@ -8,7 +8,6 @@ import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
 const Header = () => {
 
     const { user, logoutUser } = useContext(AuthContext);
-    console.log(user);
 
     const handleSignOut = () => {
         logoutUser()

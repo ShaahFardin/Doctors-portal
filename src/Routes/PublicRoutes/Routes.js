@@ -8,6 +8,7 @@ import ManageDoctors from "../../Pages/Dashboard/ManageDoctors/ManageDoctors";
 import MyAppointment from "../../Pages/Dashboard/MyAppointment/MyAppointment";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
 import Home from "../../Pages/Home/Home/Home";
+import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 import Login from "../../Pages/Shared/Login/Login";
 import Registration from "../../Pages/Shared/Registration/Registration";
 import AdminRoutes from "../AdminRoutes/AdminRoutes";
@@ -17,6 +18,7 @@ import PrivateRoute from "../PrivateRoutes/PrivateRoute";
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/',
@@ -39,6 +41,7 @@ import PrivateRoute from "../PrivateRoutes/PrivateRoute";
     {
         path: '/dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/dashboard',
