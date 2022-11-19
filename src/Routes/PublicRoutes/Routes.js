@@ -6,6 +6,7 @@ import AddDoctor from "../../Pages/Dashboard/AddDoctor/AddDoctor";
 import AllUser from "../../Pages/Dashboard/AllUsers/AllUser";
 import ManageDoctors from "../../Pages/Dashboard/ManageDoctors/ManageDoctors";
 import MyAppointment from "../../Pages/Dashboard/MyAppointment/MyAppointment";
+import Payment from "../../Pages/Dashboard/Payment/Payment";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Shared/Login/Login";
 import Registration from "../../Pages/Shared/Registration/Registration";
@@ -54,6 +55,11 @@ import PrivateRoute from "../PrivateRoutes/PrivateRoute";
             {
                 path: '/dashboard/manage-doctors',
                 element: <AdminRoutes><ManageDoctors></ManageDoctors></AdminRoutes>
+            },
+            {
+                path: `/dashboard/payment/:id`,
+                loader: ({params})=> fetch(`http://localhost:5000/bookings/${params.id}`),
+                element: <AdminRoutes><Payment></Payment></AdminRoutes>
             },
         ]
     }

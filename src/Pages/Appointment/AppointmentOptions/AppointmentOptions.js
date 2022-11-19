@@ -3,7 +3,7 @@ import PrimaryButtons from '../../../components/PrimaryButtons/PrimaryButtons';
 
 const AppointmentOptions = ({ option, setTreatment }) => {
 
-    const { name, slots } = option;
+    const { name, slots, price } = option;
 
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
@@ -15,6 +15,7 @@ const AppointmentOptions = ({ option, setTreatment }) => {
                         {slots.length} {slots.length > 1 ? "Spaces " : "Space "}
                         Available today
                     </p>
+                    <p className='font-semibold'>Price : $ {price}</p>
                 </div>
                 <div className="card-actions justify-center">
                     <label
