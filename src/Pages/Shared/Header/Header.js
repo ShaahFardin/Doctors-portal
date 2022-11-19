@@ -60,7 +60,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <Link to='/' className="btn btn-ghost normal-case text-xl">
-                    <p className='text-3xl text-green-500'>
+                    <p className='text-3xl text-green-500 font-bold'>
                         <FontAwesomeIcon className='mr-3' icon={faHospitalUser} />
                         Doctors Portal
                     </p>

@@ -4,13 +4,12 @@ import { AuthContext } from '../context/AuthProvider';
 import useAdmin from '../hooks/useAdmin';
 import Header from '../Pages/Shared/Header/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcaseMedical, faHome, faList, faRightFromBracket, faUserDoctor, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faBriefcaseMedical, faUserDoctor, faUsers } from '@fortawesome/free-solid-svg-icons'
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
 
 const DashboardLayout = () => {
 
     const { user } = useContext(AuthContext);
-
     const [isAdmin] = useAdmin(user?.email)
 
     return (
