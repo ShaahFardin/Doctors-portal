@@ -52,10 +52,12 @@ const MyAppointment = () => {
                                     <td>
 
 
-                                        <Link to={`/dashboard/payment/${booking._id}`}>
+                                        {<Link to={`/dashboard/payment/${booking._id}`}>
                                             <button className='bg-blue-900 text-white px-6 py-1'>Pay</button>
-                                        </Link>
-
+                                        </Link>}
+                                        {
+                                            booking.price && booking.paid && <span className='text-green-500'>paid</span>
+                                        }
                                     </td>
                                 </tr>)
                         }
